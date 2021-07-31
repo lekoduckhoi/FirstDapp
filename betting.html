@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Betting</title>
+
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="betting.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+</head>
+<body oncontextmenu="return false">
+    
+    <div class="header">
+    
+        <h1>LEKO</h1>
+        <nav>
+            <ul class="nav__links">
+                <li class="dropdown"><a href="javascript:void(0)"; class="dropbtn" >Home</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">About</a>
+                        <a href="setUserName.html">Set Username</a>
+                    </div>
+                </li>
+                <li><a href="ico.html">ICO</a></li>
+                <li><a href="staking.html">Staking</a></li>
+                <li><a  href="create.html">Create Token</a></li>
+                <li><a style="color: black; font-size: 4.026229508196721vh;" href="betting.html">Bet</a></li>
+                <li class="dropdown"><a  href="javascript:void(0)"; class="dropbtn" >NFT</a>
+                    <div class="dropdown-content">
+                        <a href="yournft.html">Your NFT</a>
+                        <a href="marketplace.html">Marketplace</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button class="allbut" id="connect">Connect Metamask</button></a>
+    </div>
+    <div class="box">
+        <div class="boxhead">
+            <h1>DECENTRALIZED BETTING SYSTEM</h1>
+        </div>
+        <div class="top">
+            <div class="amount">
+                <h2>AMOUNT</h2>
+                <input id="amount" type="number" placeholder="0">
+                <input type="text" id="amounttext" value="LEKO" disabled/>
+                <progress id="progress1" value="53" max="1222"></progress>
+                <p id="lekobalance">Your LEKO balance: </p>
+            </div>
+            <div class="dice">
+                <img src="image/dice.png" id="dice">
+            </div>
+            <div class="winchance">
+                <h2>WIN CHANCE</h2>
+                <input id="winchance" type="number" placeholder="50">
+                <input type="text" id="winchancetext" value="%" disabled/>
+                <progress id="progress2" value="50" max="100"></progress>
+                <p id="totalprofit">Your Total Profit: </p>
+            </div>
+        </div>
+        <div class="betbut">
+            <button class="allbut" id="betbut">BET +  LEKO</button>
+        </div>
+        <div class="txinfo">
+            <p id="txinfo">Your transaction is being sent to the blockchain, it may takes a few minute...<a target="_blank" id="txlink" href="">know more</a></p>
+        </div>
+        <div class="table">
+            <div class="stt">
+                <p style="background-color: white; border-top-left-radius: 4vh; " >Bet Id</p>
+                <div class="_stt"></div>
+            </div>
+            <div class="address">
+                <p style="background-color: white">Address / Username</p>
+                <div class="_address"></div>
+            </div>
+            <div class="betamount">
+                <p style="background-color: white">Amount</p>
+                <div class="_betamount"></div>
+            </div>
+            <div class="profit">
+                <p style="background-color: white; border-top-right-radius: 4vh">Profit</p>
+                <div class="_profit"></div>
+            </div>
+        </div> 
+    </div>
+</body>
+<script src="contract.js"></script>
+<script>
+    function addEventInfo(ant) {
+        betContract.getPastEvents('Bet', 
+        {
+        filter: {number: ant}, 
+        fromBlock: 10229623,
+        toBlock: 'latest'
+        }, (err, result) => { 
+            usernameContract.methods.viewUsername(result[0].returnValues.user).call((err, result1) => {
+                if(result1 == "") {
+                    if(result[0].returnValues.profit > 0){
+                        $("._stt").prepend("<p style='background-color: rgb(224, 255, 224)'>"+String(result[0].returnValues.number)+ "</p>")
+                        $("._address").prepend("<p style='background-color: rgb(224, 255, 224)'>"+String(result[0].returnValues.user)+ "</p>")
+                        $("._betamount").prepend("<p style='background-color: rgb(224, 255, 224)'>"+String(result[0].returnValues.amount)+ "</p>")
+                        $("._profit").prepend("<p style='background-color: rgb(224, 255, 224)'>"+String(result[0].returnValues.profit)+ "</p>")
+                    } else {
+                        $("._stt").prepend("<p style='background-color: rgb(245, 146, 146)'>"+String(result[0].returnValues.number)+ "</p>")
+                        $("._address").prepend("<p style='background-color: rgb(245, 146, 146)'>"+String(result[0].returnValues.user)+ "</p>")
+                        $("._betamount").prepend("<p style='background-color: rgb(245, 146, 146)'>"+String(result[0].returnValues.amount)+ "</p>")
+                        $("._profit").prepend("<p style='background-color: rgb(245, 146, 146)'>"+String(result[0].returnValues.profit)+ "</p>")
+                    }
+                } else {
+                    if(result[0].returnValues.profit > 0){
+                        $("._stt").prepend("<p style='background-color: rgb(224, 255, 224)'>"+String(result[0].returnValues.number)+ "</p>")
+                        $("._address").prepend("<p style='background-color: rgb(224, 255, 224)'>"+result1+ "</p>")
+                        $("._betamount").prepend("<p style='background-color: rgb(224, 255, 224)'>"+String(result[0].returnValues.amount)+ "</p>")
+                        $("._profit").prepend("<p style='background-color: rgb(224, 255, 224)'>"+String(result[0].returnValues.profit)+ "</p>")
+                    } else {
+                        $("._stt").prepend("<p style='background-color: rgb(245, 146, 146)'>"+String(result[0].returnValues.number)+ "</p>")
+                        $("._address").prepend("<p style='background-color: rgb(245, 146, 146)'>"+result1+ "</p>")
+                        $("._betamount").prepend("<p style='background-color: rgb(245, 146, 146)'>"+String(result[0].returnValues.amount)+ "</p>")
+                        $("._profit").prepend("<p style='background-color: rgb(245, 146, 146)'>"+String(result[0].returnValues.profit)+ "</p>")
+                    }
+                }
+            })
+            
+        })
+    }
+    function print() {
+        $("._stt").empty();
+        $("._address").empty();
+        $("._betamount").empty();
+        $("._profit").empty();
+        betContract.methods.viewLastBetId().call((err, result) => {
+            let items = [4, 3, 2, 1, 0]
+            let runLoop = async () => {
+            for ( const item of items ) {
+                await new Promise( resolve => setTimeout( resolve, 200 ) )
+                addEventInfo(result - item)
+            }}
+            runLoop()
+        })
+    }
+    function startApp() {
+        $("#txinfo").hide()
+        print()
+        console.log("start App")
+        if(isConnectToMetamask){ 
+            usernameContract.methods.viewUsername(accounts[0]).call((err, result) => {
+                if(result == "") {
+                    $("#connect").html("Your Account: "+ accounts[0].toString().substr(0, 7) +"....")
+                } else {
+                    $("#connect").html("Welcome " + result)
+                }
+            })
+            leko.methods.balanceOf(accounts[0]).call((err, result) => {
+                $("#lekobalance").html("Your LEKO Balance:  " + web3.utils.fromWei(result, 'ether') + "  LEKO")
+		    	lekobalance = web3.utils.fromWei(result, 'ether');
+                $("#progress1").attr("max", lekobalance)
+		    });
+            betContract.methods.viewTotalProfit(accounts[0]).call((err, result) => {
+                $("#totalprofit").html("Your Total Profit: "+ String(result) + " LEKO")
+            })
+            $("#progress1").attr("max", lekobalance)
+		    $("#txlink").attr("href", "https://ropsten.etherscan.io/address/" + accounts[0])
+            $("#betbut").prop('disabled', false)
+        } else {
+            $("#betbut").prop('disabled', true)
+        }
+    }
+    $("#amount").keyup(function() {
+        $("#progress1").attr("value", $("#amount").val())
+        var mot = String(parseInt($("#amount").val()*100/$("#winchance").val()))
+        $("#betbut").html("BET +"+mot+ "LEKO")
+        //($("#amount").val()*100/$("#winchance").val())
+	})
+    $("#winchance").keyup(function() {
+        $("#progress2").attr("value", $("#winchance").val())
+        var mot = String(parseInt($("#amount").val()*100/$("#winchance").val()))
+        $("#betbut").html("BET +"+mot+ "LEKO")
+    })
+
+    $("#betbut").click(function() {
+        var _amount = $("#amount").val();
+        var _winchance = $("#winchance").val();
+        if(_amount <= 0 || !Number.isInteger(Number(_amount))){
+            alert("Amount must be a positive integer")
+        } else if(_amount > Number(lekobalance)) {
+            alert("You don't have enough LEKO")
+        } else if (_winchance > 90 || _winchance < 10) {
+            alert("Win chance must greater than 10% and  smaller than 90%")
+        } else if (!Number.isInteger(Number(_winchance))) {
+            alert("Winchance must be a positive integer")
+        } else {
+            $("#txinfo").show()
+            $(".allbut").prop('disabled', true)
+            leko.methods.approve(betAddress, web3.utils.toWei(String(_amount), 'ether'))
+            .send({from: accounts[0]})
+            .on('receipt', function(){
+                betContract.methods.bet(_amount, _winchance)
+                .send({from: accounts[0]})
+                .on('receipt', function(){
+                    $(".allbut").prop('disabled', false)
+                    $("._stt p").last().remove()
+                    $("._betamount p").last().remove()
+                    $("._address p").last().remove()
+                    $("._profit p").last().remove()
+                    betContract.methods.viewLastBetId().call((err, result) => {
+                        addEventInfo(result)
+                    })
+                    leko.methods.balanceOf(accounts[0]).call((err, result) => {
+                        $("#lekobalance").html("Your LEKO Balance:  " + web3.utils.fromWei(result, 'ether') + "  LEKO")
+		    	    lekobalance = web3.utils.fromWei(result, 'ether');
+                        $("#progress1").attr("max", lekobalance)
+		            });
+                    betContract.methods.viewTotalProfit(accounts[0]).call((err, result) => {
+                        $("#totalprofit").html("Your Total Profit: "+ String(result) + " LEKO")
+                    })
+                    $("#progress1").attr("max", lekobalance)
+                })
+            })
+        }
+    })
+</script>

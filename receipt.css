@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.box {
+    background-image: url("/image/pinkbg.jfif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 4.761904761904762vh;
+    height: 71vh;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 20vh;
+    margin-bottom: 9vh;
+    border-radius: 6.5476190476190474vh;
+    -webkit-box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34); 
+    box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34);
+    border: 0.23809523809523808vh solid blueviolet;
+}
+.box h1 {
+    text-align: center;
+    padding-top: 3.5714285714285716vh;
+    padding-bottom: 3.5714285714285716vh;
+    font-family: "Montserrat", sans-serif;
+    font-size: 5.9523809523809526vh;
+    color: white;
+}
+.boxhead {
+    background-color: #7B68EE;
+    border-top-right-radius: 5.9523809523809526vh;
+    border-top-left-radius: 5.9523809523809526vh;
+    border-bottom: 0.23809523809523808vh solid blueviolet;
+}
+.content {
+    float:left;
+    width: 45%;
+    text-align: right;
+}
+.haicham {
+    float: left;
+    width: 10%;
+    text-align: center;
+}
+.result {
+    float: left;
+    width: 45%;
+}
+.receipt:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.receipt {
+    padding-top: 4vh;
+}
+.receipt p {
+    font-size: 2.6vh;
+    padding-bottom: 3vh;
+}
+#display {
+    margin-top: 3.5vh;
+    padding-top: 2.380952380952381vh;
+    padding-bottom: 2.380952380952381vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 55%;
+    display: block;
+    border-style: none;
+    background-color:#7B68EE;
+    border: none;
+    border-radius: 5.9523809523809526vh;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    font-size: 3.142857142857143vh;
+    font-family: "Montserrat", sans-serif;
+}
+#display:hover {
+    background-color: rgb(86, 200, 245);
+}

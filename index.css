@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&family=Raleway:wght@300&family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+.row {
+    background-color: #E6E6FA;
+    width: 97%;
+    height: 48vh;
+    border: 0.53809523809523808vh solid blueviolet;
+    padding-bottom: 3.5714285714285716vh;
+    padding-top: 3.5714285714285716vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3.7857142857142858vh;
+    background-size: 100% 100%;
+    margin-top: 17.857142857142858vh;
+    -webkit-box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34); 
+    box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34);
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.left {
+    float: left;
+    width: 80%;
+    padding: 1.1904761904761905vh;
+    padding-left: 3.5714285714285716vh;
+}
+.left h1{
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 5.2vh;
+}
+.left li {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 2.142857142857143vh;
+}
+.left h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5833333333333335vh;
+}
+.steps {
+    padding-left: 17%;
+}
+.steps li {
+    font-size: 2.5vh;
+}
+.right {
+    float: left;
+    width: 20%;
+    padding: 1.1904761904761905vh; 
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+    display: block;
+    padding-top: 2.380952380952381vh;
+}
+.right img {
+    width: 90%;
+}
+#arrow {
+    padding-top: 5.9523809523809526vh;
+    padding-bottom: 8.333333333333334vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    display: block;
+}
+#about {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    margin-top: 7.142857142857143vh;
+    font-size: 6.761904761904762vh;
+    font-weight: 700;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    margin-left: 16vh;
+    margin-right: 16vh;
+}
+.ico h1, .staking h1, .create h1, .betting h1, .nft h1 {
+    padding-top: 10.714285714285714vh;
+    padding-left: 23.80952380952381vh;
+    color:#E6E6FA;
+    font-family: "Montserrat", sans-serif;
+    font-size: 4.285714285714286vh;
+    text-decoration: underline;
+}
+.ico h2, .staking h2, .create h2, .betting h2, .nft h2 {
+    padding-top: 2.380952380952381vh;
+    padding-left: 11.904761904761905vh;
+    color:#E6E6FA;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.857142857142857vh;
+}
+.ico {
+    width: 100%;
+    background-size: 100% 100%;
+    background-image: url("image/ico.jpg");
+
+}
+.ico70 {
+    float: left;
+    width: 70%;  
+    height: 80vh; 
+}
+.ico30 {
+    width: 30%;
+    float: left;
+    height: 80vh; 
+}
+#funimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50vh;
+    margin-top: 15vh;
+}
+.ico:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#but {
+    margin-bottom: 5vh;
+    padding-top: 2.380952380952381vh;
+    padding-bottom: 2.380952380952381vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    display: block;
+    border-style: none;
+    background-color:#7B68EE;
+    border: none;
+    border-radius: 5.9523809523809526vh;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    font-size: 4.142857142857143vh;
+    font-family: "Montserrat", sans-serif;
+}
+#but:hover {
+    background-color: rgb(86, 200, 245);
+}
+.staking30 {
+    float: left;
+    width: 30%;
+    height: 80vh;
+}
+.staking70 {
+    float: left;
+    width: 70%; 
+    height: 80vh;  
+}
+.staking:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.staking {
+    width: 100%;
+    margin: auto;
+    background-size: 100% 100%;
+    background-image: url("image/pinkbg.jfif");
+}
+
+.create70 {
+    float: left;
+    width: 70%;   
+    height: 80vh;
+  }
+.create30 {
+    float: left;
+    width: 30%;
+    height: 80vh;
+}
+.create:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.create {
+    background-image: url("image/createbg.jpg");
+}
+
+.betting70 {
+    float: left;
+    width: 70%;   
+    height: 80vh;
+  }
+.betting30 {
+    float: left;
+    width: 30%;
+    height: 80vh;
+}
+.betting:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.betting {
+    width: 100%;
+    margin: auto;
+    background-size: 100% 100%;
+    background-image: url("image/lottery.jfif");
+}
+.nft70 {
+    float: left;
+    width: 70%;   
+    height: 80vh;
+}
+.nft30 {
+    float: left;
+    width: 30%;
+    height: 80vh;
+}
+.nft:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.nft {
+    width: 100%;
+    margin: auto;
+    background-size: 100% 100%;
+    background-image: url("image/nftbg.jpg");
+}
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+.footer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.contact {
+    float: left;
+    width: 50%;   
+    padding-top: 4.761904761904762vh;
+    padding-bottom: 4.761904761904762vh;
+}
+.social {
+    float: left;
+    width: 50%;
+    padding-top: 4.761904761904762vh;
+    padding-bottom: 4.761904761904762vh;
+}
+.footer h4 {
+    padding-left: 50%;
+    padding-bottom: 3.5714285714285716vh;
+}
+.contact li {
+    margin-left: 20%;
+}
+.social .icon {
+    padding-left: 56%;
+}
+.social p {
+    padding-left: 36%;
+    font-size: 1.5476190476190477vh;
+}

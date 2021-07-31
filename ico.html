@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>ICO</title>
+
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="ico.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+</head>
+<body oncontextmenu="return false">
+    <div class="header">
+    
+        <h1>LEKO</h1>
+        <nav>
+            <ul class="nav__links">
+                <li class="dropdown"><a href="javascript:void(0)"; class="dropbtn" >Home</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">About</a>
+                        <a href="setUserName.html">Set Username</a>
+                    </div>
+                </li>
+                <li><a style="color: black; font-size: 4.026229508196721vh;" href="ico.html">ICO</a></li>
+                <li><a href="staking.html">Staking</a></li>
+                <li><a  href="create.html">Create Token</a></li>
+                <li><a href="betting.html">Bet</a></li>
+                <li class="dropdown"><a  href="javascript:void(0)"; class="dropbtn" >NFT</a>
+                    <div class="dropdown-content">
+                        <a href="yournft.html">Your NFT</a>
+                        <a href="marketplace.html">Marketplace</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button class="allbut" id="connect">Connect Metamask</button></a>
+    
+    </div>
+
+    <div class="box">
+        <div class="boxhead">
+            <h1>LEKO TOKEN ICO</h1>
+        </div>
+        
+        <p id="pricenoti">( Price: 0.0001 ETH / $LEKO )</p>
+        
+        <h2 id="ethbalance">Your ETH Balance: 0 ETH</h2>
+        <h2 id="lekobalance">Your LEKO Balance: 0 LEKO</h2>
+        <div class="amount">
+				<p id="price">0 ETH</p>
+				
+				<input type="number" placeholder="0" id="amount" min="1" max="1000000" step="1"/>
+                <input type="text" id="LEKOtext" value="LEKO" disabled/>
+                <button class="allbut" id="buybut">BUY</button>
+        </div>
+		<div class="txinfo">
+			<p id="txinfo">Your transaction is being sent to the blockchain, it may takes a few minute...<a target="_blank" id="txlink" href="">know more </a></p>
+		</div>
+		<progress id="progress" value="4000" max="2000000"></progress>        
+		<p id="tokensold">Token sold : 34222/1000000</p>
+    </div>
+</body>
+<script src="contract.js"></script>
+<script>
+    function startApp() {
+        $("#txinfo").hide()
+        if(isConnectToMetamask){
+            $("#buybut").prop('disabled', false)
+            usernameContract.methods.viewUsername(accounts[0]).call((err, result) => {
+                if(result == "") {
+                    $("#connect").html("Your Account: "+ accounts[0].toString().substr(0, 7) +"....")
+                } else {
+                    $("#connect").html("Welcome " + result)
+                }
+            })
+            leko.methods.balanceOf(accounts[0]).call((err, result) => {
+                $("#lekobalance").html("Your LEKO Balance:  " + web3.utils.fromWei(result, 'ether') + "  LEKO")
+		    	lekobalance = result;
+            });
+		    web3.eth.getBalance(accounts[0], function(error, result) {
+		    	$("#ethbalance").html("Your ETH Balance:  " + web3.utils.fromWei(result, 'ether')+ "  ETH")
+		    });
+		    buyLekoContract.methods.viewTokenSale().call((err, result) => {
+		    	$("#progress").attr("value", result)
+		    	$("#tokensold").html("Token sold: " + result + "/2000000 LEKO")
+		    })
+		    $("#txlink").attr("href", "https://ropsten.etherscan.io/address/" + accounts[0])
+            $("#buybut").prop('disabled', false)
+            $("#buybut").html("BUY")
+        } else {
+            $("#buybut").prop('disabled', true)
+            $("#buybut").html("Connect")
+        }
+        buyLekoContract.methods.viewTokenSale().call((err, result) => {
+			$("#progress").attr("value", result)
+			$("#tokensold").html("Token sold: " + result + "/2000000 LEKO")
+		})
+	}
+	$("#buybut").click(function() {
+		if(!Number.isInteger(Number($("#amount").val()))){
+			alert("Amount must be an integer")
+		} else if($("#amount").val() <= 0) {
+			alert("Amount must be greater than 0")
+		} else {
+			web3.eth.getBalance(accounts[0], function(error, result) {
+				if ($("#amount").val() >= 10000*web3.utils.fromWei(result, 'ether')) {
+					alert("You don't have enough ETH")
+				} else {
+                    $("#txinfo").show()
+                    $("#buybut").prop('disabled', true)
+					$(".allbut").prop('disabled', true)
+                    buyLekoContract.methods.buyLeko($("#amount").val())
+					.send({
+						from: accounts[0],
+						value: $("#amount").val()*10**14,
+					})
+					.on('receipt', function() {
+            			startApp()
+                        $(".allbut").prop('disabled', false)
+    				})
+
+				}
+			});
+		}
+	})
+	$("#amount").keyup(function() {
+		$("#price").html($("#amount").val()*(0.0001) + " ETH")
+	})
+</script>

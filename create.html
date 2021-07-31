@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Create</title>
+
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="create.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+</head>
+<body oncontextmenu="return false">
+    
+    <div class="header">
+    
+        <h1>LEKO</h1>
+        <nav>
+            <ul class="nav__links">
+                <li class="dropdown"><a href="javascript:void(0)"; class="dropbtn" >Home</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">About</a>
+                        <a href="setUserName.html">Set Username</a>
+                    </div>
+                </li>
+                <li><a href="ico.html">ICO</a></li>
+                <li><a href="staking.html">Staking</a></li>
+                <li><a style="color: black; font-size: 4.026229508196721vh;" href="create.html">Create Token</a></li>
+                <li><a href="betting.html">Bet</a></li>
+                <li class="dropdown"><a  href="javascript:void(0)"; class="dropbtn" >NFT</a>
+                    <div class="dropdown-content">
+                        <a href="yournft.html">Your NFT</a>
+                        <a href="marketplace.html">Marketplace</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button class="allbut" id="connect">Connect Metamask</button></a>
+    
+    </div>
+    
+    <div class="box">
+        <div class="boxhead">
+            <h1>CREATE ERC20 TOKEN</h1>
+        </div>
+        <div class="create">
+            <h3>( PRICE: 80.000 $LEKO )</h3>
+            <div class="balance">
+                <h2 id="lekobalance">Your LEKO Balance: 0 LEKO</h2>
+                <h2 id="usertoken">Your Token: <a href="receipt.html" id="tokenlink"></a></h2>
+            </div>
+            <div class="input">
+                <div class="leftspace">
+					<p></p>
+				</div>
+				<div class="totalsupply">
+                    <p>Total Supply</p>
+                    <input type="number" min="1" max="1000000000" step="1" id="totalsupply" placeholder="1000000">
+                </div>
+                <div class="tokenname">
+                    <p>Token Name</p>
+                    <input type="text" minlength="1" maxlength="15" id="tokenname" placeholder="Leko Token">
+                </div>
+                <div class="symbol">
+                    <p>Token Symbol</p>
+                    <input type="text" minlength="1" maxlength="4" id="symbol" placeholder="LEKO">
+                </div>
+				<div class="rightspace">
+					<p></p>
+				</div>
+            </div>
+            <div class="createbut">
+                <div class="txinfo">
+                    <p id="txinfo">Your transaction is being sent to the blockchain, it may takes a few minute...<a target="_blank" id="txlink" href="">know more</a></p>
+                </div>
+                <button class="allbut" id="createbut">CREATE</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="contract.js"></script>
+<script>
+    function startApp() {
+        $("#txinfo").hide()
+        if(isConnectToMetamask) {
+            usernameContract.methods.viewUsername(accounts[0]).call((err, result) => {
+                if(result == "") {
+                    $("#connect").html("Your Account: "+ accounts[0].toString().substr(0, 7) +"....")
+                } else {
+                    $("#connect").html("Welcome " + result)
+                }
+            })
+            leko.methods.balanceOf(accounts[0]).call((err, result) => {
+                $("#lekobalance").html("Your LEKO Balance:  " + web3.utils.fromWei(result, 'ether') + "  LEKO")
+		    	lekobalance = result;
+            });
+            createContract.methods.viewLastTokenName(accounts[0]).call((err, result) => {
+                if (result != "") {
+                    $("#tokenlink").html(result)
+                } else {
+                    $("#usertoken").html("Your Token: You haven't create any token yet.")
+                }
+            })
+		    $("#txlink").attr("href", "https://ropsten.etherscan.io/address/" + accounts[0])
+            $("#createbut").prop('disabled', false)
+            $("#createbut").html("CREATE")
+        } else {
+            $("#createbut").prop('disabled', true)
+            $("#createbut").html("Connect")
+        }
+	}
+	$("#createbut").click(function() {
+		leko.methods.balanceOf(accounts[0]).call((err, result) => {
+			if(web3.utils.fromWei(result, 'ether') < 80000){
+				alert("You don't have enough LEKO")
+			} else {
+				var totalsupply = $("#totalsupply").val();
+				var name = $("#tokenname").val();
+				var symbol = $("#symbol").val();
+				if (totalsupply > 10000000000 || totalsupply <= 0){
+					alert("Total Supply should be greater than 0 and less than 10 billion")
+				} else if(!Number.isInteger(Number(totalsupply))){
+					alert("Total Supply should be an integer")
+				} else if(name.length ==0 || symbol.length == 0) {
+					alert("Please modify your Token Name and Symbol")
+				} else {
+                    $("#txinfo").show();
+					$(".allbut").prop('disabled', true)
+                    leko.methods.approve(createAddress, web3.utils.toWei("80000", 'ether'))
+            		.send({from: accounts[0]})
+                    .on('receipt', function() {
+            	        createContract.methods.createERC20(totalsupply, name, symbol)
+					    .send({from: accounts[0]})
+                        .on('receipt', function() {
+                            $(".allbut").prop('disabled', false)
+                            startApp()
+                        })
+    		        })
+
+				}
+			}
+		})
+	})
+	
+</script>

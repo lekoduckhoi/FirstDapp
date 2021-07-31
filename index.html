@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>First Dapp</title>
+
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+</head>
+<body oncontextmenu="return false">
+    <div class="header">
+    
+        <h1>LEKO</h1>
+        <nav>
+            <ul class="nav__links">
+                <li class="dropdown"><a style="color: black; font-size: 4.026229508196721vh;" href="javascript:void(0)"; class="dropbtn" >Home</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">About</a>
+                        <a href="setUserName.html">Set Username</a>
+                    </div>
+                </li>
+                <li><a href="ico.html">ICO</a></li>
+                <li><a href="staking.html">Staking</a></li>
+                <li><a  href="create.html">Create Token</a></li>
+                <li><a href="betting.html">Bet</a></li>
+                <li class="dropdown"><a  href="javascript:void(0)"; class="dropbtn" >NFT</a>
+                    <div class="dropdown-content">
+                        <a href="yournft.html">Your NFT</a>
+                        <a href="marketplace.html">Marketplace</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button class="allbut" id="connect">Connect Metamask</button></a>
+    
+    </div>
+
+    <div class="row">
+        <div class="left">
+            <h1>You need to install MetaMask to use this website</h1>
+            <br>
+            <h2 style="text-align: center;">MetaMask is a software cryptocurrency wallet used to interact with the Ethereum blockchain. It allows users to access their Ethereum wallet through a browser extension or mobile app, which can then be used to interact with decentralized applications</h2>
+            <br><br>
+            <div class="steps">
+                <ul>
+                    <li>Step 1: Click <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">here</a> to install MetaMask on your device, then pin it on the extensions bar.</li>
+                    <li>Step 2: Create your account and change the network to Ropsten (default is Mainnet).</li>
+                    <li>Step 3: Go to <a target="_blank" href="https://faucet.dimensions.network/">Ropsten Ethereum Faucet</a> to take 5 test Ether.</li>
+                    <li>Step 4: Reload website, click Connect MetaMask and enjoy.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <img id="metamasklogo" src="image/metamask.gif">
+        </div>
+    </div>
+    
+    <h1 id="about">About This DAPP ( Decentralized Applications )</h1>
+    <img src="image/arrowdown.png" id="arrow">
+    
+    <div class="ico">
+        <div class="ico70">
+            <h1>INITIAL COIN OFFERING ( ICO )</h1>
+            <br><br>
+            <h2>- ICO is an acronym that means Initial Coin Offering, which is how funds are raised for a new cryptocurrency offering. It's similar to an IPO (Initial Public Offering) which raises funds when a new company ventures onto the stock market.</h2>
+            <h2>- In this Website I have created an ICO for my LEKO token with a value of 0.0001 ETH ( approx 0.3$ ) per $LEKO. With these $LEKOs you can later set your username, create your own ERC20 Token, play lottery or buy some NFTs... Buy, Hold strong and never sell !!!<br>(Not a financial advice)</h2>
+            <br><br>
+            <a href="ico.html"><button class="allbut" id="but">BUY LEKO</button></a>
+            <br><br><br><br>
+        </div>
+        <div class="ico30">
+            <img id="funimg" src="image/money.png">
+        </div>
+    </div>
+
+    <div class="staking">
+        <div class="staking30">
+            <img id="funimg" src="image/staking.jpg">
+        </div>
+        <div class="staking70">
+            <h1 style="color: black;">YIELD FARMING</h1>
+            <br><br>
+            <h2 style="color: black;">- Yield farming, also referred to as liquidity mining, is a way to generate rewards with cryptocurrency holdings. In simple terms, it means locking up cryptocurrencies and getting rewards ( like open a saving acount in a bank, but with higher interest ).</h2>
+            <h2 style="color: black;">- In this Website, I have created a Token farming system where you can earn $LEKO when staking Ethereum, this is just a fun project so I have set the APY ( Annual Percentage Yield ) to freaking 525.6%, that's mean you can get 10 $LEKO with each Ether you are Staking per minute.<br><br>Have Fun !!!</h2>
+            <br><br>
+            <a href="staking.html"><button class="allbut" id="but">STAKE</button></a>
+            <br><br><br><br>
+        </div>
+    </div>
+
+    <div class="create">
+        <div class="create70">
+            <h1>CREATE YOUR OWN ERC 20 TOKEN</h1>
+            <br><br>
+            <h2>- An ERC20 token is a blockchain-based asset with similar functionality to bitcoin, ether, and bitcoin cash: it can hold value and be sent and received. ERC20 tokens are stored and sent using ethereum addresses and transactions, and use gas to cover transaction fees.</h2>
+            <h2>- By clicking CREATE, the system will automatically create an ERC20 token for you and all the supply will be deposited to your address. Because everything in this website is deployed on Ropsten testnet, a Blockchain network used for testing so your token won't have any value, however you can still send, recieve or see any other accounts' balance of your token.  </h2>
+            <br><br>
+            <a href="create.html"><button class="allbut" id="but">CREATE</button></a>
+            <br><br><br><br>
+        </div>
+        <div class="create30">
+            <img src="image/coin.png" id="funimg">
+        </div>
+    </div>
+
+    <div class="betting">
+        <div class="betting30">
+            <img id="funimg" src="image/betting.png">
+        </div>
+        <div class="betting70">
+            <h1 style="color: black;">DECENTRALIZED BETTING SYSTEM</h1>
+            <br><br>
+            <h2 style="color: black;">- This betting system is also written by smart contracts and deployed on the Ropsten testnet ethereum blockchain. Here you can play bet with cryptocurrency as much as you want, don't need to trust anyone except for the blockchain.</h2>
+            <h2 style="color: black;">- Choose your amount and the win chance you want to bet, the pay out value will be amount x 100 / win chance. Enjoy and know when to stop.</h2>
+            <h2 style="color: black;">- Whenever you lose, just double the amount.</h2>
+            <br><br><br>
+            <a href="betting.html"><button class="allbut" id="but">BET</button></a>
+            <br><br><br><br>
+        </div>
+    </div>
+
+    <div class="nft">
+        <div class="nft70">
+            <h1 style="color: white;">NON FUNGIBLE TOKEN ( NFT )</h1>
+            <br><br>
+            <h2 style="color: white;">- A non-fungible token (NFT) is a unit of data stored on a digital ledger, called a blockchain, that certifies a digital asset to be unique and therefore not interchangeable. NFTs can be used to represent items such as photos, videos, audio, and other types of digital files. Access to any copy of the original file, however, is not restricted to the buyer of the NFT. While copies of these digital items are available for anyone to obtain, NFTs are tracked on blockchains to provide the owner with a proof of ownership that is separate from copyright. </h2>
+            <h2 style="color: white;">- This website allow users to create their own NFT which last forever on a distributed network, you can also sell your NFT on market and buy others' NFT too.</h2>
+            <br><br><br>
+            <a href="yournft.html"><button class="allbut" id="but">NFT</button></a>
+            <br><br><br><br>
+        </div>
+        <div class="nft30">
+            <img id="funimg" src="image/NFT.png">
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="contact">
+            <h4>CONTACT INFORMATION:</h4>
+            <ul>
+                <li>Le Duc Khoi.</li>
+                <li>Telephone: (+84)816499326.</li>
+                <li>Email: lekoduchoi4@gmail.com.</li>
+                <li>Address: Hanoi, Vietnam.</li>
+            </ul>
+        </div>
+        <div class="social">
+            <h4>SOCIAL NETWORK</h4>
+            <div class="icon">
+                <a target="_blank" href="https://www.facebook.com/profile.php?id=100013062256286">
+                    <img src="image/fb.png">
+                </a>
+            </div>
+            <br>
+            <p>Donate: 0x4cce6A0F50Fb0593CCb3F21ebF441e6D5CF980B5</p>
+        </div>
+    </div>
+</body>
+<script src="contract.js"></script>
+<script>
+function startApp() {
+	if(isConnectToMetamask){ 
+        usernameContract.methods.viewUsername(accounts[0]).call((err, result) => {
+		if(result == "") {
+			$("#connect").html("Your Account: "+ accounts[0].toString().substr(0, 7) +"....")
+		} else {
+			$("#connect").html("Welcome " + result)
+		}
+	    })
+    }
+}
+</script>

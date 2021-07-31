@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+body {
+    background-image: url("image/bodybackground.jpg");
+}
+.box {
+    background-image: url("image/lottery.jfif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 4.761904761904762vh;
+    height: 120vh;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 20vh;
+    margin-bottom: 9vh;
+    border-radius: 6.5476190476190474vh;
+    -webkit-box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34); 
+    box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34);
+}
+.box h1 {
+    text-align: center;
+    padding-top: 3.5714285714285716vh;
+    padding-bottom: 3.5714285714285716vh;
+    font-family: "Montserrat", sans-serif;
+    font-size: 5.9523809523809526vh;
+    color: white;
+}
+.boxhead {
+    width: 100%;
+    background-color: #7B68EE;
+    border-top-right-radius: 5.9523809523809526vh;
+    border-top-left-radius: 5.9523809523809526vh;
+    border-bottom: 0.23809523809523808vh solid blueviolet;
+}
+.amount {
+    float: left;
+    width: 33%;
+}
+.dice {
+    float: left;
+    width: 33%;
+}
+.winchance {
+    float: left;
+    width: 33%;
+}
+.top:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#amount {
+    -webkit-appearance: none!important;
+    border: 0.11904761904761904vh solid gray;
+    border-right: 0px;
+    outline: none;
+    text-align: center;
+    margin-left: 19.047619047619047vh;
+    border-right-color: white;
+    width: 49%;
+    padding-top: 1.1904761904761905vh;
+    padding-bottom: 1.1904761904761905vh;
+    font-size: 3.5714285714285716vh;
+    border-bottom-left-radius: 1.1904761904761905vh;
+    border-top-left-radius: 1.1904761904761905vh;
+}
+#winchance{
+    -webkit-appearance: none!important;
+    border: 0.11904761904761904vh solid gray;
+    border-right: 0px;
+    outline: none;
+    text-align: center;
+    margin-left: 3.547619047619047vh;
+    border-right-color: white;
+    width: 59%;
+    padding-top: 1.1904761904761905vh;
+    padding-bottom: 1.1904761904761905vh;
+    font-size: 3.5714285714285716vh;
+    border-bottom-left-radius: 1.1904761904761905vh;
+    border-top-left-radius: 1.1904761904761905vh;
+}
+#amounttext {
+    -webkit-appearance: none!important;
+    color: black;
+    text-align: center;
+    width: 18%;
+    border: 0.11904761904761904vh solid gray;
+    margin: 0 0 0 -0.8333333333333334vh;
+    border-left-color: white ;
+    background: white;
+    padding-top: 1.1904761904761905vh;
+    padding-bottom: 1.1904761904761905vh;
+    font-size: 3.5714285714285716vh;
+    border-bottom-right-radius: 1.1904761904761905vh;
+    border-top-right-radius: 1.1904761904761905vh;
+}
+#winchancetext {
+    -webkit-appearance: none!important;
+    color: black;
+    text-align: center;
+    width: 8%;
+    border: 0.11904761904761904vh solid gray;
+    margin: 0 0 0 -0.8333333333333334vh;
+    border-left-color: white ;
+    background: white;
+    padding-top: 1.1904761904761905vh;
+    padding-bottom: 1.1904761904761905vh;
+    font-size: 3.5714285714285716vh;
+    border-bottom-right-radius: 1.1904761904761905vh;
+    border-top-right-radius: 1.1904761904761905vh;
+}
+.amount h2 {
+    font-family: "Montserrat", sans-serif;
+    padding-left: 31vh;
+    margin-bottom: 1vh;
+    font-size: 4vh;
+    margin-top: 6vh;
+}
+.winchance h2 {
+    font-family: "Montserrat", sans-serif;
+    padding-left: 9.7vh;
+    margin-bottom: 1vh;
+    font-size: 4vh;
+    margin-top: 6vh;
+}
+.box h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.5vh;
+    text-align: center;
+}
+.dice {
+    text-align: center;
+}
+#dice {
+    margin-top: 5vh;
+    height: 30vh;
+}
+progress {
+    padding-top: 4vh;
+    margin-top: 1vh;
+    width: 77%;
+}
+#progress1 {
+    margin-left: 23%;
+}
+.amount p {
+    font-size: 3.5vh;
+    padding-top: 3vh;
+    float: right;
+}
+.winchance p {
+    font-size: 3.5vh;
+    padding-top: 3vh;
+    padding-left: 5%;
+}
+.top {
+    height: 36vh;
+}
+.betbut {
+    text-align: center;
+}
+#betbut {
+    height: 8vh;
+    width: 40%;
+    font-size: 4vh;
+    color: white;
+    background-color: #7B68EE;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 2vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+#betbut:hover {
+    background-color: rgb(86, 200, 245);
+}
+.txinfo {
+    margin-top: 2vh;
+    height: 5vh;
+    text-align: center;
+}
+#txinfo {
+    font-size: 2.4vh;
+}
+.table {
+    text-align: center;
+    /* background-color: rgb(243, 224, 224); */
+    background-image: url("image/pls1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 47.5vh;
+    margin-top: 2vh;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    font-family: "Montserrat", sans-serif;
+    border: 0.2vh black solid;
+    border-bottom: none;
+    border-top-left-radius: 4vh;
+    border-top-right-radius: 4vh;
+}
+.stt {
+    float: left;
+    width: 10%;
+    border-right: 0.2vh black solid;
+}
+.address {
+    float: left;
+    width: 60%;
+    border-right: 0.2vh black solid;
+}
+.betamount {
+    float:left;
+    width: 15%;
+    border-right: 0.2vh black solid;
+}
+.profit {
+    float: left;
+    width: 15%;
+}
+.table p{
+    font-size: 3vh;
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+    border-bottom: black 0.2vh solid;
+}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <title>Marketplace</title>
+
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="marketplace.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereumjs/browser-builds/dist/ethereumjs-tx/ethereumjs-tx-1.3.3.min.js"></script>
+</head>
+<body oncontextmenu="return false">
+    
+    <div class="header">
+    
+        <h1>LEKO</h1>
+        <nav>
+            <ul class="nav__links">
+                <li class="dropdown"><a href="javascript:void(0)"; class="dropbtn" >Home</a>
+                    <div class="dropdown-content">
+                        <a href="index.html">About</a>
+                        <a href="setUserName.html">Set Username</a>
+                    </div>
+                </li>
+                <li><a href="ico.html">ICO</a></li>
+                <li><a href="staking.html">Staking</a></li>
+                <li><a href="create.html">Create Token</a></li>
+                <li><a href="betting.html">Bet</a></li>
+                <li class="dropdown"><a style="color: black; font-size: 4.026229508196721vh;" href="javascript:void(0)"; class="dropbtn" >NFT</a>
+                    <div class="dropdown-content">
+                        <a href="yournft.html">Your NFT</a>
+                        <a href="marketplace.html">Marketplace</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <a class="cta" href="#"><button class="allbut" id="connect">Connect Metamask</button></a>
+    </div>
+    <div class="h1">
+        <h1>Most Valuable NFTs</h1>
+    </div>
+    <div class="ranking">
+        <div class="left">
+            <div class="top2">
+                <h1 id="top2name">Name</h1>
+                <img src="image/pls2.jpg" id="top2img">
+                <div class="leftleft">
+                    <h1 id="top2owner">Owner: LEKOOL</h1>
+                    <h1 id="top2value">Value: 121211 LEKO</h1>
+                </div>
+                <div class="leftright">
+                    <img src="image/medal2.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <h2 id="top1name">Name</h2>
+            <img src="image/pls2.jpg" alt="" id="top1img">
+            <div class="midleft">
+                <h1 id="top1owner">Owner: LEKOOL</h1>
+                <h1 id="top1value">Value: 121211 LEKO</h1>
+            </div>
+            <div class="midright">
+                <img src="image/medal1.png">
+            </div>
+        </div>
+        <div class="right">
+            <div class="top3">
+                <h1 id="top3name">Name</h1>
+                <img src="image/pls2.jpg" id="top3img">
+                <div class="rightleft">
+                    <h1 id="top3owner">Owner: LEKOOL</h1>
+                    <h1 id="top3value">Value: 121211 LEKO</h1>
+                </div>
+                <div class="rightright">
+                    <img src="image/medal3.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="market">
+        <div class="about">
+            <h1>MARKET</h1>
+        </div>
+    </div>
+    <div class="nftcollection">
+
+    </div>
+</body>
+<script src="contract.js"></script>
+<script>
+    var lekobal;
+    var totalSupply;
+    var n = [];
+    var allPrice;
+    var top1Id;
+    var top2Id;
+    var top3Id;
+    var allPrice1
+    function a() {
+        $(".nftcollection").empty();
+        nftContract.methods.viewTotalSupply().call((err, res1) => {
+            totalSupply = res1;
+            for(let element = 0; element <parseInt(res1); element++) {
+                nftContract.methods.viewBurn(element).call((err, result) => {
+                    if(result == false) {
+                        nftContract.methods.viewConditionForSale(element).call((err, res3) => {
+                            if(res3 == true) {
+                                addForSale(element)
+                            } 
+                        })
+                    }
+                })
+            }
+        })
+    }
+    
+    function startApp() {
+        
+        if(isConnectToMetamask){
+            usernameContract.methods.viewUsername(accounts[0]).call((err, result) => {
+                if(result == "") {
+                    $("#connect").html("Your Account: "+ accounts[0].toString().substr(0, 7) +"....")
+                } else {
+                    $("#connect").html("Welcome " + result)
+                }
+            })
+            leko.methods.balanceOf(accounts[0]).call((err, result) => {
+                lekobal = result;
+            })
+        }
+        a()
+        nftContract.methods.viewRealPrice().call((err, result) => {
+            allPrice = result.map(i=>Number(i));
+            allPrice.sort((a, b) => a < b ? 1 : a > b ? -1 : 0);
+            nftContract.methods.viewRealPrice().call((err, result) => {
+                allPrice1 = result.map(i=>Number(i));
+                var o;
+                for (o = 1; o < allPrice1.length; o++){
+                    if(allPrice1[o] == allPrice[0]){
+                        top1Id = o;
+                    } else if(allPrice1[o] == allPrice[1] && top2Id == undefined){
+                        top2Id = o;
+                    } else if(allPrice1[o] == allPrice[2]){
+                        top3Id = o;
+                    }
+                }
+                nftContract.methods.viewDataOfTokenId(top1Id).call((err, result) => {
+                    $("#top1name").html(String(result[0]))
+                    $("#top1img").attr("src", result[2])
+                    nftContract.methods.viewOwnerOfTokenId(top1Id).call((err, res1) => {
+                        usernameContract.methods.viewUsername(res1).call((err, res2) => {
+                            if(res2 == "") {
+                                $("#top1owner").html("Owner: "+ res2.toString().substr(0, 7) +"....")
+                            } else {
+                                $("#top1owner").html("Owner: "+ res2)
+                            }
+                        })
+                    })
+                    $("#top1value").html("Value: "+allPrice[0]+" LEKO")
+                })
+                nftContract.methods.viewDataOfTokenId(top2Id).call((err, result) => {
+                    $("#top2name").html(String(result[0]))
+                    $("#top2img").attr("src", result[2])
+                    nftContract.methods.viewOwnerOfTokenId(top2Id).call((err, res1) => {
+                        usernameContract.methods.viewUsername(res1).call((err, res2) => {
+                            if(res2 == "") {
+                                $("#top2owner").html("Owner: "+ res2.toString().substr(0, 7) +"....")
+                            } else {
+                                $("#top2owner").html("Owner: "+ res2)
+                            }
+                        })
+                    })
+                    $("#top2value").html("Value: "+allPrice[1]+" LEKO")
+                })
+                nftContract.methods.viewDataOfTokenId(top3Id).call((err, result) => {
+                    $("#top3name").html(String(result[0]))
+                    $("#top3img").attr("src", result[2])
+                    nftContract.methods.viewOwnerOfTokenId(top3Id).call((err, res1) => {
+                        usernameContract.methods.viewUsername(res1).call((err, res2) => {
+                            if(res2 == "") {
+                                $("#top3owner").html("Owner: "+ res2.toString().substr(0, 7) +"....")
+                            } else {
+                                $("#top3owner").html("Owner: "+ res2)
+                            }
+                        })
+                    })
+                    $("#top3value").html("Value: "+allPrice[2]+" LEKO")
+                })
+            })
+        })
+    }
+    function addForSale(i) {
+        $(".nftcollection").append('<div class="div'+String(i)+'"></div>')
+        $(".div"+String(i)).css({"float": "left", "height": "70vh", "background-color": "white", "width":"25%", "border-top": "3px solid black", "border-right":"black solid 3px", "text-align": "center"})
+        nftContract.methods.viewDataOfTokenId(i).call((err, result) => {
+            $(".div"+String(i)).append('<h1>'+result[0]+"</h1>")
+            $(".div"+String(i)).append('<img src="'+ result[2] +'">')
+            nftContract.methods.viewOwnerOfTokenId(i).call((err, res5) => {
+                usernameContract.methods.viewUsername(res5).call((err, res6) => {
+                    if(res6 == "") {
+                        $(".div"+String(i)).append('<p>Owner: '+ res5.toString().substr(0, 7)+'...</p>')
+                        $(".div"+String(i)).append('<br>')
+                        nftContract.methods.viewPrice(i).call((err, res7) => {
+                            $(".div"+String(i)).append('<button class="allbut" onclick="buy(this.id)" id="'+ String(i) + '">'+String(res7)+'</button>')
+                        })
+                    } else {
+                        $(".div"+String(i)).append('<p>Owner: '+String(res6)+"</p>")
+                        $(".div"+String(i)).append('<br>')
+                        nftContract.methods.viewPrice(i).call((err, res7) => {
+                            $(".div"+String(i)).append('<button class="allbut" onclick="buy(this.id)" id="'+ String(i) + '">'+String(res7)+'</button>')
+                        })
+                    }
+                })
+            })
+
+        })
+    }
+    function buy(k) {
+        nftContract.methods.viewOwnerOfTokenId(k).call((Err, res9) => {
+            if(res9 == accounts[0]){
+                alert("This is already your NFT")
+            } else {
+                nftContract.methods.viewPrice(k).call((err, res8) => {
+                    if(res8 > Number(lekobal)){
+                        alert("You don't have enough LEKO")
+                    } else {
+                        $(".addbut").prop('disabled', true)
+                        leko.methods.approve(nftAddress, web3.utils.toWei(String(res8), 'ether'))
+            		    .send({from: accounts[0]})
+                        .on('receipt', function() {
+                            nftContract.methods.buy(k)
+                            .send({from: accounts[0]})
+                            .on('receipt', function() {
+                                $(".addbut").prop('disabled', false)
+                                startApp()
+                            })
+                        })
+                    }
+                })
+            }
+        })
+    }
+    function settop3(){
+        nftContract.methods.viewDataOfTokenId(allPrice[0]).call((err, result) => {
+            $("#top1name").html(String(result[0]))
+            $("#top1img").attr("src", result[2])
+        })
+    }
+</script>

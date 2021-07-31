@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+.box {
+    background-image: url("image/pinkbg.jfif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 4.761904761904762vh;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 23.80952380952381vh;
+    border-radius: 6.5476190476190474vh;
+    -webkit-box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34); 
+    box-shadow: -0.9523809523809523vh -1.1904761904761905vh 4.0476190476190474vh 0.35714285714285715vh rgba(0,0,0,0.34);
+}
+.box h1 {
+    text-align: center;
+    padding-top: 3.5714285714285716vh;
+    padding-bottom: 3.5714285714285716vh;
+    font-family: "Montserrat", sans-serif;
+    font-size: 5.9523809523809526vh;
+    color: white;
+}
+.box p {
+    text-align: center;
+    font-size: 3vh;
+}
+.boxhead {
+    background-color: #7B68EE;
+    border-top-right-radius: 5.9523809523809526vh;
+    border-top-left-radius: 5.9523809523809526vh;
+    border-bottom: 0.23809523809523808vh solid blueviolet;
+}
+.box h2 {
+    font-family: "Montserrat", sans-serif;
+    padding-left: 7.142857142857143vh;
+}
+.username {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+input[type="text"]#username{
+    -webkit-appearance: none!important;
+    border: 0.11904761904761904vh solid gray;
+    outline: none;
+    text-align: center;
+    margin-left: 19.047619047619047vh;
+    width: 50%;
+    padding-top: 1.1904761904761905vh;
+    padding-bottom: 1.1904761904761905vh;
+    margin-top: 4.761904761904762vh;
+    font-size: 3.5714285714285716vh;
+    border-radius: 1.1904761904761905vh;
+}
+#setbut {
+    font-size: 3.5714285714285716vh;
+    padding-top: 1.1904761904761905vh;
+    padding-bottom: 1.1904761904761905vh;
+    padding-left: 2.380952380952381vh;
+    padding-right: 2.380952380952381vh;
+    color: white;
+    background-color: #7B68EE;
+    border: 0.11904761904761904vh solid gray;
+    border-radius: 1.1904761904761905vh;
+}
+#setbut:hover {
+    background-color: rgb(86, 200, 245);
+}
+#txinfo {
+    font-size: 2.142857142857143vh;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

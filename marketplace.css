@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&family=Raleway:wght@300&family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+.h1 {
+    
+    width: 100%;
+    margin-top: 16vh;
+    height: 10vh;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+.h1 h1 {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 10vh;
+
+}
+.left {
+    float: left;
+    width: 35%;
+    height: 64vh;
+}
+.middle {
+    float: left;
+    width: 30%;
+    background-color: white;
+    height: 81vh;
+}
+.right {
+    float: left;
+    width: 35%;
+    height: 64vh;
+}
+.middle img {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 3vh;
+    height: 45vh;
+}
+.midleft {
+    float: left;
+    width: 70%;
+    height: 12vh;
+    text-align: center;
+}
+.midright {
+    float: left;
+    width: 30%;
+    height: 22vh
+}
+.midleft h1 {
+    font-family: "Montserrat", sans-serif;
+    padding-top: 3vh;
+    font-size: 4vh;
+}
+.midright img {
+    width: 90%;
+    height: 30vh;
+}
+.top2 {
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3vh;
+    height: 70vh;
+}
+.top3 {
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3vh;
+    height: 70vh;
+}
+.left img {
+    width: 90%;
+    height: 40vh;
+    margin-left: 5%;
+    margin-top: 3vh;
+}
+.right img {
+    width: 90%;
+    height: 40vh;
+    margin-left: 5%;
+    margin-top: 3vh;
+}
+.leftleft, .rightleft{
+    width: 70%;
+    float: left;
+    text-align: center;
+    height: 16vh;
+}
+.leftright, .rightright {
+    float: left;
+    width: 30%;
+    height: 16vh
+}
+.leftleft h1, .rightleft h1 {
+    font-family: "Montserrat", sans-serif;
+    padding-top: 2vh;
+    font-size: 2.6vh;
+}
+.leftright img, .rightright img {
+    width: 90%;
+    height: 24vh;
+}
+.middle h2 {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    font-size: 5vh;
+    padding-top: 4vh;
+}
+.top2 h1, .top3 h1 {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    font-size: 4vh;
+    padding-top: 3vh;
+}
+.market {
+    width: 100%;
+    background-color: purple;
+    margin-top: 90vh;
+}
+.market h1 {
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 10vh;
+    color: white;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+.nftcollection {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+.nftcollection img {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 40vh;
+    margin-top: 2vh;
+    border: purple 2px solid;
+}
+.nftcollection input {
+    width: 80%;
+    font-size: 5vh;
+    text-align: center;
+    margin-top: 2vh;
+    border-radius: 2vh;
+    outline: none;
+}
+.nftcollection button {
+    font-size: 5vh;
+    width:80%;
+    margin-top: 1vh;
+    background-color: purple;
+    border: none;
+    color: white;
+    border-radius: 2vh;
+}
+.nftcollection button:hover {
+    background-color: rgb(146, 64, 146);
+}
+.nftcollection p {
+    font-size: 4vh;
+    padding-top: 2.7vh;
+    font-family: 'Ubuntu', sans-serif;
+}
+.nftcollection h1 {
+    font-size: 5vh;
+    font-family: "Montserrat", sans-serif;
+    padding-top: 2vh;
+}
